@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pho King Pho — Gettin Pho TN</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --red: #D85A30;
+    --red-light: #FAECE7;
+    --red-dark: #4A1B0C;
+    --amber: #EF9F27;
+    --amber-light: #FAEEDA;
+    --green: #3B6D11;
+    --green-light: #EAF3DE;
+    --cream: #FFF8F0;
+    --brown: #5C3D2E;
+  }
+  body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--brown); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    background: var(--red); padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: #fff; }
+  .nav-logo span { color: var(--amber); }
+  .nav-links a {
+    color: rgba(255,255,255,0.9); text-decoration: none;
+    margin-left: 1.5rem; font-weight: 700; font-size: 0.9rem; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amber); }
+
+  /* HERO */
+  .hero {
+    background: var(--red); padding: 6rem 2rem 5rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: "🍜"; position: absolute; font-size: 14rem;
+    opacity: 0.06; top: -2rem; right: -2rem; transform: rotate(15deg);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block; background: var(--amber); color: var(--red-dark);
+    font-size: 0.75rem; font-weight: 800; padding: 0.3rem 1rem;
+    border-radius: 2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Fredoka One', cursive; font-size: clamp(3rem, 9vw, 6rem);
+    color: #fff; line-height: 1.05; margin-bottom: 0.4rem;
+  }
+  .hero h1 .accent { color: var(--amber); }
+  .hero-aka {
+    font-size: clamp(1rem, 2.5vw, 1.5rem); font-weight: 800;
+    color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-style: italic;
+  }
+  .hero-aka span { color: var(--amber); }
+  .hero-sub {
+    font-size: 1.1rem; color: rgba(255,255,255,0.8); font-weight: 600;
+    margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--amber); color: var(--red-dark);
+    font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
+    padding: 0.85rem 2.2rem; border: none; border-radius: 3rem;
+    cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(239,159,39,0.4); }
+  .btn-outline {
+    background: transparent; color: #fff;
+    font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700;
+    padding: 0.85rem 2.2rem; border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 3rem; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+  /* TAGLINE STRIP */
+  .tagline-strip {
+    background: var(--amber); padding: 0.8rem;
+    text-align: center; font-weight: 800; font-size: 1rem;
+    color: var(--red-dark); letter-spacing: 1px;
+  }
+
+  /* SECTIONS */
+  .section-inner { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    text-align: center; font-size: 0.75rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 3px; color: var(--red); margin-bottom: 0.5rem;
+  }
+  .section-title {
+    text-align: center; font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--brown); margin-bottom: 0.5rem;
+  }
+  .section-title .accent { color: var(--red); }
+  .section-desc {
+    text-align: center; font-size: 1rem; color: #8a6555;
+    max-width: 500px; margin: 0 auto 3rem;
+  }
+
+  /* MENU */
+  .menu-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;
+  }
+  .menu-card {
+    background: #fff; border-radius: 1.2rem; overflow: hidden;
+    border: 2px solid var(--red-light); transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .menu-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(216,90,48,0.12); }
+  .menu-card.featured { border: 2px solid var(--amber); position: relative; }
+  .menu-card.featured::before {
+    content: "⚡ SIGNATURE ⚡"; position: absolute; top: 12px; right: 12px;
+    background: var(--amber); color: var(--red-dark);
+    font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.7rem;
+    border-radius: 1rem; letter-spacing: 1px;
+  }
+  .menu-card.extreme { border: 2px solid #A32D2D; position: relative; }
+  .menu-card.extreme::before {
+    content: "☠️ EXTREME ☠️"; position: absolute; top: 12px; right: 12px;
+    background: #A32D2D; color: #FCEBEB;
+    font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.7rem;
+    border-radius: 1rem; letter-spacing: 1px;
+  }
+  .menu-card-img {
+    height: 150px; display: flex; align-items: center;
+    justify-content: center; font-size: 4.5rem;
+  }
+  .menu-card-img.plain { background: #F1EFE8; }
+  .menu-card-img.explosion { background: linear-gradient(135deg, #FAEEDA, #FAECE7); }
+  .menu-card-img.fire { background: linear-gradient(135deg, #FAECE7, #F7C1C1); }
+  .menu-card-body { padding: 1.2rem 1.3rem; }
+  .menu-card-name { font-family: 'Fredoka One', cursive; font-size: 1.4rem; color: var(--brown); }
+  .menu-card-desc { font-size: 0.88rem; color: #8a6555; margin: 0.4rem 0 0.8rem; line-height: 1.6; }
+  .menu-card-price { font-weight: 800; color: var(--red); font-size: 1.05rem; }
+  .menu-card-badge {
+    display: inline-block; background: var(--amber-light); color: #854F0B;
+    font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.6rem;
+    border-radius: 1rem; margin-left: 0.5rem; text-transform: uppercase;
+  }
+
+  /* WHY SECTION */
+  #why { background: var(--red-light); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; margin-top: 1rem;
+  }
+  .why-card {
+    background: #fff; border-radius: 1.2rem; padding: 1.6rem 1.2rem;
+    border: 2px solid rgba(216,90,48,0.15); text-align: center;
+    transition: transform 0.2s;
+  }
+  .why-card:hover { transform: translateY(-3px); }
+  .why-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  .why-title { font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: var(--brown); margin-bottom: 0.4rem; }
+  .why-desc { font-size: 0.85rem; color: #8a6555; line-height: 1.6; }
+
+  /* CTA */
+  .cta-wrap { padding: 0 2rem 5rem; }
+  .cta-section {
+    background: var(--red); border-radius: 2rem; padding: 4rem 2rem;
+    text-align: center; position: relative; overflow: hidden;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .cta-section::before {
+    content: "⛳"; position: absolute; font-size: 10rem; opacity: 0.07;
+    bottom: -2rem; left: -1rem; transform: rotate(-15deg); pointer-events: none;
+  }
+  .cta-section::after {
+    content: "🍜"; position: absolute; font-size: 10rem; opacity: 0.07;
+    top: -2rem; right: -1rem; transform: rotate(10deg); pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: 'Fredoka One', cursive; font-size: clamp(2rem, 5vw, 3.2rem);
+    color: #fff; margin-bottom: 0.6rem;
+  }
+  .cta-section h2 span { color: var(--amber); }
+  .cta-section p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 2rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--red-dark); color: rgba(255,255,255,0.7);
+    text-align: center; padding: 2.5rem 2rem; font-size: 0.88rem;
+  }
+  .footer-logo {
+    font-family: 'Fredoka One', cursive; font-size: 1.5rem;
+    color: #fff; margin-bottom: 0.6rem;
+  }
+  .footer-logo span { color: var(--amber); }
+  footer .footer-info { margin-bottom: 0.4rem; }
+  footer .footer-fine { font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge { animation: fadeUp 0.5s ease both; }
+  .hero h1:first-of-type { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-aka { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-btns { animation: fadeUp 0.6s 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Pho <span>King</span> Pho</div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#why">Why Us</a>
+    <a href="#order">Order</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Now open in Tennessee</div>
+  <h1>Pho <span class="accent">King</span> Pho</h1>
+  <p class="hero-aka">— aka Gettin <span>Pho</span> TN —</p>
+  <p class="hero-sub">Tennessee's most ridiculously good bowl of pho. Seriously, it's pho-nomenal.</p>
+  <div class="hero-btns">
+    <a href="#order" class="btn-primary">Order Now</a>
+    <a href="#menu" class="btn-outline">View Menu</a>
+  </div>
+</div>
+
+<div class="tagline-strip">🌶️ Real broth. Real noodles. Real pho-king good. 🌶️</div>
+
+<div id="menu">
+  <div class="section-inner">
+    <p class="section-tag">What we're serving</p>
+    <h2 class="section-title">The <span class="accent">Menu</span></h2>
+    <p class="section-desc">Three bowls. One spectrum. Pick your destiny.</p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <div class="menu-card-img plain">🥣</div>
+        <div class="menu-card-body">
+          <div class="menu-card-name">Basic Pho</div>
+          <div class="menu-card-desc">Broth. Noodles. That's it. No frills, no drama, no golf balls. Just a solid, humble bowl of pho for people who aren't ready for the rest of the menu.</div>
+          <div class="menu-card-price">$8.99 <span class="menu-card-badge">For Beginners</span></div>
+        </div>
+      </div>
+
+      <div class="menu-card featured">
+        <div class="menu-card-img explosion">⛳💥</div>
+        <div class="menu-card-body">
+          <div class="menu-card-name">The Explosive Pho</div>
+          <div class="menu-card-desc">A real golf ball, cut in half tableside, stuffed to the brim with springy Brazilian noodles and dunked into our richest broth. Fore-ward warning: it will change your life.</div>
+          <div class="menu-card-price">$18.99 <span class="menu-card-badge">Signature</span></div>
+        </div>
+      </div>
+
+      <div class="menu-card extreme">
+        <div class="menu-card-img fire">🔥💀🔥</div>
+        <div class="menu-card-body">
+          <div class="menu-card-name">Extreme Pho</div>
+          <div class="menu-card-desc">Everything in the Explosive Pho, but the broth is on fire (literally), the noodles are ghost pepper-infused, and you must sign a waiver. Finish it and your meal is free. Nobody has finished it.</div>
+          <div class="menu-card-price">$24.99 <span class="menu-card-badge" style="background:#FCEBEB;color:#A32D2D;">Sign Waiver</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="why">
+  <div class="section-inner">
+    <p class="section-tag">Why we slap</p>
+    <h2 class="section-title">Gettin <span class="accent">Pho</span> TN Since Day One</h2>
+    <p class="section-desc">We didn't come to Tennessee to play. We came to serve bowls that hit different.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">⏱️</div>
+        <div class="why-title">24-Hour Broth</div>
+        <div class="why-desc">We simmer our bones longer than most people sleep. That's dedication.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌿</div>
+        <div class="why-title">Fresh Every Day</div>
+        <div class="why-desc">Herbs, sprouts, and garnishes delivered fresh daily. No soggy herb crimes here.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤌</div>
+        <div class="why-title">Pho-thentic Recipe</div>
+        <div class="why-desc">Roasted spices, charred ginger, and a secret ratio we'll take to the grave.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⛳</div>
+        <div class="why-title">Golf Ball Optional</div>
+        <div class="why-desc">Only restaurant in the world serving pho inside a golf ball. Yes, really. No, we don't know why either.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-wrap" id="order">
+  <div class="cta-section">
+    <h2>Ready to get <span>Pho TN?</span></h2>
+    <p>Order online or swing by — we'll have a bowl waiting with your name on it.</p>
+    <a href="tel:6158465464" class="btn-primary" style="font-size:1.1rem; padding:0.9rem 2.8rem;">Order Now</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Pho <span>King</span> Pho · Gettin <span>Pho</span> TN</div>
+  <div class="footer-info">123 Noodle Lane, Nashville, TN &nbsp;·&nbsp; (615) PHO-KING &nbsp;·&nbsp; Open 11am–10pm daily</div>
+  <div class="footer-fine">© 2026 Pho King Pho. All broths reserved. This restaurant is totally fake.</div>
+</footer>
+
+</body>
+</html>
